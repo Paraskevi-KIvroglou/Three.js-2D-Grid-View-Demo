@@ -138,4 +138,4 @@ For support, please open an issue in the GitHub repository or contact [kibroglou
 
 ---
 
-Made with ❤️ by [Your Name]
+Made with ❤️ by [Paraskevi Kivroglou]
