@@ -1,0 +1,100 @@
+/**
+ * 2D Grid View Implementation Documentation
+ * 
+ * Overview:
+ * This implementation creates an interactive 2D grid view using Three.js, featuring:
+ * - A square viewport with a responsive grid
+ * - Pan and zoom controls
+ * - A draggable object with grid snapping
+ * - Coordinate system centered on (0,0)
+ * 
+ * Key Components:
+ * 
+ * 1. Viewport Setup
+ * - Uses a square viewport (80% of smallest window dimension)
+ * - Maintains aspect ratio during window resizing
+ * - Centers content using flex layout
+ * Reason: Ensures consistent viewing experience across different screen sizes
+ * 
+ * 2. Camera System
+ * - Uses OrthographicCamera instead of PerspectiveCamera
+ * - Positioned directly above (0, 10, 0) looking down
+ * - Maintains top-down view during panning
+ * Reason: Provides true 2D view without perspective distortion
+ * 
+ * 3. Grid System
+ * - GridHelper rotated to XZ plane
+ * - Invisible plane mesh for raycasting
+ * - Black center dot marking origin (0,0)
+ * Reason: Creates visual reference points and enables accurate mouse interaction
+ * 
+ * 4. Navigation Controls
+ * a) Zooming:
+ * - Mouse wheel zoom
+ * - Zoom buttons with min/max limits
+ * - Smooth zoom transitions
+ * Reason: Provides multiple intuitive ways to adjust view scale
+ * 
+ * b) Panning:
+ * - Mouse drag to pan
+ * - Speed adjusted based on zoom level
+ * - Maintains orientation during pan
+ * Reason: Allows exploration of larger grid area while maintaining context
+ * 
+ * 5. Draggable Circle Implementation
+ * - Blue circle with slight elevation (y = 0.01)
+ * - Raycaster for precise selection
+ * - Grid snapping during drag
+ * - Separate drag state from pan state
+ * Reason: Demonstrates interactive object placement with grid alignment
+ * 
+ * 6. Coordinate System
+ * - Grid-aligned coordinate reporting
+ * - Snapping to integer positions
+ * - Origin centered on black dot
+ * Reason: Provides precise position feedback for interactive elements
+ * 
+ * Technical Decisions:
+ * 
+ * 1. Raycasting Implementation
+ * - Uses invisible plane for consistent intersection detection
+ * - Matches grid dimensions exactly
+ * Reason: Provides reliable hit detection across entire grid surface
+ * 
+ * 2. Event Handling
+ * - Separate states for panning vs object dragging
+ * - Prevention of default behaviors
+ * - Cursor feedback during interactions
+ * Reason: Creates clear separation between different interaction modes
+ * 
+ * 3. Performance Considerations
+ * - Limited update frequency to animation frames
+ * - Efficient state management
+ * - Optimized geometry creation
+ * Reason: Ensures smooth performance even with continuous interactions
+ * 
+ * 4. Visual Hierarchy
+ * - Grid lines (light)
+ * - Center dot (black)
+ * - Draggable circle (blue)
+ * - Slight Y-axis offsets to prevent z-fighting
+ * Reason: Creates clear visual distinction between elements
+ * 
+ * Usage Notes:
+ * - Pan: Click and drag empty grid space
+ * - Zoom: Mouse wheel or zoom buttons
+ * - Object Interaction: Click and drag blue circle
+ * - Coordinate Reading: Click grid positions
+ * 
+ * Limitations:
+ * - Single draggable object (can be extended)
+ * - Integer grid positions only
+ * - No rotation of objects
+ * 
+ * Future Improvements:
+ * - Multiple draggable objects
+ * - Custom grid spacing
+ * - Object rotation
+ * - Coordinate display overlay
+ * - Save/load object positions
+ */
